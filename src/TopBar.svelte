@@ -53,7 +53,13 @@
     <!-- nav bar for small screens -->
     <nav class="adwa-bar adwa-hide-large adwa-hide-medium">
         <h1 class="adwa-button adwa-round adwa-red  adwa-hover-green">Vidutors</h1>
-        <span><button class="adwa-button adwa-right  adwa-hover-white" on:click={() => showTab()}><i class="fa fa-bars adwa-large adwa-margin adwa-red"></i></button></span>
+        <span><button class="adwa-button adwa-right  adwa-hover-white" on:click={() => showTab()}>
+        {#if !isTabShowing}
+        <i class="fa fa-times adwa-large adwa-margin adwa-text-red"></i>
+        {:else}
+        <i class="fa fa-bars adwa-large adwa-margin adwa-red"></i>
+        {/if}
+        </button></span>
         <ul class="adwa-dropdown" class:adwa-hide = {isTabShowing}>
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <ol on:click={homeHandler} style="width: 100%;" class="adwa-button adwa-round adwa-red adwa-bar adwa-hover-green">HOME</ol>

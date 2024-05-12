@@ -1,107 +1,57 @@
-# This repo is no longer maintained. Consider using `npm init vite` and selecting the `svelte` option or — if you want a full-fledged app framework — use [SvelteKit](https://kit.svelte.dev), the official application framework for Svelte.
+# VidTutors
 
----
+VidTutors is a web application designed to provide access to video tutorials tailored for the Ethiopian audience. Whether you're a beginner or an expert, VidTutors offers a diverse range of tutorials to enhance your skills and knowledge in various fields.
 
-# svelte app
+## Features
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+- **Ethiopian Context**: VidTutors curates video tutorials specifically for the Ethiopian audience, considering their unique needs and interests.
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+- **Diverse Content**: Explore a wide range of tutorial topics covering technology, education, lifestyle, and more, all presented in an engaging video format.
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
+- **User-Friendly Interface**: Our intuitive interface makes it easy to discover, search, and watch tutorials that interest you.
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+- **Responsive Design**: VidTutors is built with responsiveness in mind, ensuring seamless access across different devices, including desktops, tablets, and smartphones.
 
+- **Customization**: Personalize your learning experience by selecting tutorials based on your interests and skill levels.
 
-## Get started
+## Getting Started
 
-Install the dependencies...
+To get started with VidTutors, follow these steps:
 
-```bash
-cd svelte-app
-npm install
-```
+1. **Clone the Repository**: Clone the VidTutors repository to your local machine using Git:
 
-...then start [Rollup](https://rollupjs.org):
+    ```bash
+    git clone https://github.com/your-username/vidtutors.git
+    ```
 
-```bash
-npm run dev
-```
+2. **Install Dependencies**: Navigate to the project directory and install the necessary dependencies:
 
-Navigate to [localhost:8080](http://localhost:8080). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+    ```bash
+    cd vidtutors
+    npm install
+    ```
 
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+3. **Run the Application**: Start the development server to run VidTutors locally:
 
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
+    ```bash
+    npm run dev
+    ```
 
-## Building and running in production mode
+4. **Access VidTutors**: Open your web browser and visit [http://localhost:8080](http://localhost:8080) to access the VidTutors web app.
 
-To create an optimised version of the app:
+## Contributing
 
-```bash
-npm run build
-```
+We welcome contributions from the community to improve VidTutors. If you'd like to contribute, please follow these guidelines:
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+- Fork the repository and create a new branch for your feature or bug fix.
+- Make your changes, ensuring they adhere to the coding standards and conventions.
+- Test your changes thoroughly.
+- Submit a pull request describing the changes you've made and why they are necessary.
 
+## Feedback
 
-## Single-page app mode
+We value your feedback! If you have any suggestions, feature requests, or encounter any issues while using VidTutors, please don't hesitate to reach out to us. You can contact us via email at [contact@vidtutors.com](mailto:alazartesfaye42@gmail.com) or open an issue on GitHub.
 
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
+## License
 
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
-
-If you want to use `baseUrl` or `path` aliases within your `tsconfig`, you need to set up `@rollup/plugin-alias` to tell Rollup to resolve the aliases. For more info, see [this StackOverflow question](https://stackoverflow.com/questions/63427935/setup-tsconfig-path-in-svelte).
-
-## Deploying to the web
-
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+VidTutors is licensed under the [MIT License](LICENSE).
