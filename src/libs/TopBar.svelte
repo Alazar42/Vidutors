@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { beforeUpdate } from "svelte";
   import { createEventDispatcher } from "svelte";
   import Register from "./Register.svelte";
 
@@ -8,15 +9,23 @@
     const showTab = (e) => {
         isTabShowing = !isTabShowing
     }
-    let isLogged = false
+    $: isLogged = false
 
-    onMount(()=>{
-        if (document.cookie.includes("username") && document.cookie.includes("password")){
-            isLogged = true
-        }else{
-            isLogged = false
+    onMount(() => {
+        checkLoginStatus();
+    });
+
+    beforeUpdate(() => {
+        checkLoginStatus();
+    });
+
+    const checkLoginStatus = () => {
+        if (document.cookie.includes("VidutorsUser")) {
+            isLogged = true;
+        } else {
+            isLogged = false;
         }
-    })
+    };
 
     const homeHandler = () => {
         dispatch('Home');
@@ -30,6 +39,32 @@
         dispatch('Login')
     }
 
+    const logoutHandler = async () => {
+    let authToken = document.cookie.split("VidutorsUser=")[1]; // Extract the token from the cookie
+    if (authToken) {
+        authToken = "Token " + authToken; // Prepend "Token " to the token
+
+        try {
+            await fetch("https://vidutorsbackendrestapi.onrender.com/api/v1/logout/", {
+                method: "POST", // Assuming logout requires a POST request
+                headers: {
+                    "Authorization": authToken
+                }
+            });
+
+            // If the logout request is successful, clear the token cookie
+            document.cookie = "VidutorsUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+            // Update the isLogged state
+            
+            isLogged = false;
+        } catch (error) {
+            console.error("Error occurred during logout:", error);
+        }
+    }
+};
+
+
 </script>
 
 <header>
@@ -41,7 +76,8 @@
             <ol on:click={homeHandler} class="adwa-button adwa-round adwa-red adwa-margin-right adwa-margin-top adwa-hover-green">HOME</ol>
             <ol class="adwa-button adwa-round adwa-red adwa-margin-right adwa-margin-top adwa-hover-green">TUTORIALS</ol>
             {#if isLogged}
-            <ol class="adwa-button adwa-round adwa-red adwa-margin-top adwa-hover-green">LOGOUT</ol>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <ol on:click={logoutHandler} class="adwa-button adwa-round adwa-red adwa-margin-top adwa-hover-green">LOGOUT</ol>
             {:else}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <ol on:click={registerHandler} class="adwa-button adwa-round adwa-red adwa-margin-right adwa-margin-top adwa-hover-green">REGISTER</ol>
@@ -65,7 +101,8 @@
             <ol on:click={homeHandler} style="width: 100%;" class="adwa-button adwa-round adwa-red adwa-bar adwa-hover-green">HOME</ol>
             <ol style="width: 100%;" class="adwa-button adwa-round adwa-red adwa-bar adwa-hover-green">TUTORIALS</ol>
             {#if isLogged}
-            <ol style="width: 100%;" class="adwa-button adwa-round adwa-red adwa-bar adwa-hover-green">LOGOUT</ol>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <ol on:click={logoutHandler} style="width: 100%;" class="adwa-button adwa-round adwa-red adwa-bar adwa-hover-green">LOGOUT</ol>
             {:else}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <ol on:click={registerHandler} style="width: 100%;" class="adwa-button adwa-round adwa-red adwa-bar adwa-hover-green">REGISTER</ol>

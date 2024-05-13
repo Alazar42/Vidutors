@@ -5,27 +5,27 @@
   
     export let error;
     let email;
-    let fname;
-    let lname;
     let username;
     let password;
     let rememberMe = false;
   
     const handleRegister = () => {
       if (username && password) {
+        error = ""
         const user = {
           username,
+          email,
           password,
         };
         dispatch("handleRegister", user);
-        console.log(username, password, rememberMe);
+        console.log(username, password, email, rememberMe);
       } else {
-        console.log("Not Provided");
+        error = "Fill The Required Fields."
       }
     };
   </script>
 
-<div style="width:50%; margin-left:25%" class="">
+<div style="width:80%; margin-left: 10%" class="">
     <div class="adwa-red adwa-center"><h1>Register</h1></div>
     <div>
       {#if error}
@@ -33,24 +33,6 @@
       {/if}
       <br />
       <form on:submit|preventDefault={handleRegister}>
-        <input
-          bind:value={fname}
-          class="adwa-input"
-          type="text"
-          name="fname"
-          id="fname"
-          placeholder="Enter First Name ..."
-        />
-        <br />
-        <input
-          bind:value={lname}
-          class="adwa-input"
-          type="text"
-          name="lname"
-          id="lname"
-          placeholder="Enter Last Name ..."
-        />
-        <br />
         <input
           bind:value={email}
           class="adwa-input"

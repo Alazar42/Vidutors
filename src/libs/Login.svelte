@@ -10,6 +10,7 @@
 
   const handleLogin = () => {
     if (username && password) {
+      error = ""
       const user = {
         username,
         password,
@@ -17,12 +18,12 @@
       dispatch("handleLogin", user);
       console.log(username, password, rememberMe);
     } else {
-      console.log("Not Provided");
+      error = "Fill The Required Fields."
     }
   };
 </script>
 
-<div style="width:50%; margin-left:25%" class="">
+<div style="width:80%; margin-left: 10%" class="">
   <div class="adwa-red adwa-center"><h1>Login</h1></div>
   <div>
     {#if error}

@@ -1,7 +1,7 @@
 <script>
-	import TopBar from './TopBar.svelte'
-	import Account from './Account.svelte';
-  import LatestTutorials from './LatestTutorials.svelte';
+	import TopBar from './libs/TopBar.svelte';
+	import Account from './libs/Account.svelte';
+  import LatestTutorials from './libs/LatestTutorials.svelte'
 
 	let currentPage = "Home";
 
@@ -13,7 +13,7 @@
 		currentPage = 'Register'
 	}
 
-	const homePage = () => {
+	export const homePage = () => {
 		currentPage = 'Home'
 	}
 </script>
